@@ -37,7 +37,7 @@ async function getLatestOpamRelease() {
   });
   const matchedReleases = releases
     .filter((release) =>
-      semver.satisfies(release.tag_name, semverRange, { loose: true }),
+      semver.satisfies(release.tag_name, semverRange, { loose: true, includePrerelease: true }),
     )
     .sort(({ tag_name: v1 }, { tag_name: v2 }) =>
       semver.rcompare(v1, v2, { loose: true }),
